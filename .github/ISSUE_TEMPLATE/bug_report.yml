@@ -1,0 +1,21 @@
+name: Bug report
+about: Relate um problema reproduzível
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: O que aconteceu?
+      description: Descreva o comportamento observado.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Como reproduzir?
+      description: Informe passos, URL demonstrativa e logs sem segredos.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Ambiente
+      placeholder: Windows 11 + Docker Desktop 4.x
