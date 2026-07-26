@@ -1,13 +1,14 @@
 # Checkpoint
 
 - **Projeto:** SitePulse — Web Scraper & Change Monitoring
-- **Versão:** 1.0.0
+- **Versão:** 1.1.0
 - **Data:** 25 de julho de 2026
 - **Tipo:** checkpoint acumulativo completo
 - **Fonte de verdade:** este ZIP e seu checksum SHA-256
 
 ## Funcionalidades concluídas
 
+- landing page pública de portfólio com showcase interativo;
 - aplicação web completa em modo real e showcase;
 - API, autenticação e banco;
 - fila, worker e scheduler;

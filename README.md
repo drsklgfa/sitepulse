@@ -17,6 +17,15 @@ O SitePulse foi projetado como **produto real e projeto-vitrine**. Quem visitar 
 
 O repositório não depende de Amazon, Mercado Livre ou qualquer página externa para provar que funciona. O serviço **Demo Target** simula produto, notícias, JavaScript, lentidão e erros HTTP.
 
+
+## GitHub Pages — vitrine de portfólio
+
+A página pública combina uma **landing page profissional** com uma **demonstração interativa do dashboard** em modo showcase. Ela funciona sem backend, usando dados simulados seguros, e é publicada automaticamente pelo workflow `pages.yml`.
+
+**Acesse:** https://drsklgfa.github.io/sitepulse/
+
+Na primeira publicação, confirme em **Settings → Pages → Build and deployment → Source: GitHub Actions**. Depois disso, cada push na branch `main` que altere o frontend atualiza a página automaticamente.
+
 ## Demonstração em 3 passos
 
 ```bash

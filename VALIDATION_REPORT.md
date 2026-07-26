@@ -1,6 +1,6 @@
 # Relatório de validação
 
-## SitePulse 1.0.0 — 25 de julho de 2026
+## SitePulse 1.1.0 — 25 de julho de 2026
 
 ### Resultados executados neste checkpoint
 
@@ -9,49 +9,39 @@
 | Estrutura obrigatória do repositório | Aprovada |
 | Sintaxe Python | 42 arquivos válidos |
 | Testes do backend | 25 aprovados |
-| Cobertura do backend | 85,81% |
-| Meta mínima de cobertura | 75% — aprovada |
 | Testes do Demo Target | 2 aprovados |
-| Sintaxe TypeScript/TSX | 8 arquivos válidos |
-| YAML | 6 arquivos válidos |
+| Sintaxe TypeScript/TSX da nova vitrine | Aprovada com TypeScript 5.8.3 |
+| Verificação semântica TSX com shims locais | Aprovada |
+| YAML dos workflows CI e Pages | Aprovado |
+| JSON principal | Aprovado |
 | Procura básica por segredos | Aprovada |
-| Scraping HTTP contra servidor real | Aprovado — HTTP 200, valor `2499.9` |
-| E2E da API | Aprovado — login, seed, fila local, scraping e snapshot |
-| Registro de tentativas | Aprovado — 1 tentativa no cenário saudável |
-| Manifesto SHA-256 dos arquivos | Incluído no pacote |
+| Landing page de portfólio | Integrada ao frontend |
+| Navegação landing → demo → landing | Implementada por hash, compatível com GitHub Pages |
+| Assets de portfólio | Favicon, manifesto, robots e Open Graph incluídos |
+| GitHub Pages | Workflow configurado para testar, compilar e publicar |
 
-### E2E validado
+### Validação preservada da versão base
 
-O teste iniciou o Demo Target e a API em processos reais, autenticou com a conta demonstrativa, carregou três monitores, criou uma execução, aguardou o processamento em segundo plano e confirmou:
+A versão 1.0.0 já havia registrado:
 
-```text
-status: no_change
-http_status: 200
-value: 2499.9
-attempts: 1
-```
+- 85,81% de cobertura no backend;
+- scraping HTTP real com resposta 200;
+- fluxo E2E com login, seed, fila local, scraping e snapshot;
+- validação da proteção de rede e do ambiente demonstrativo.
 
-### Validações dependentes de ambiente externo
+### Limitação do ambiente atual
 
-| Verificação | Situação |
-|---|---|
-| `npm install`, testes Vitest e build Vite | Não concluídos: o registro npm do ambiente retornou indisponibilidade/timeout |
-| Build das imagens Docker | Não executado: Docker, Podman e Buildah não estão instalados no ambiente de geração |
-| Playwright Chromium dentro do container | Configurado, mas depende do build Docker |
+O comando `npm install` não pôde ser concluído neste ambiente porque o proxy do registro npm respondeu com HTTP 503. Por isso, o build Vite e o teste Vitest não foram marcados como executados localmente nesta revisão. A sintaxe e a estrutura TypeScript/TSX foram validadas com o compilador TypeScript 5.8.3, e o workflow `pages.yml` executa `npm install`, `npm run test` e `npm run build` antes de publicar.
 
-Esses itens estão automatizados no GitHub Actions e documentados para execução local. Não foram marcados como aprovados sem evidência.
-
-## Comandos reproduzíveis
+### Comandos reproduzíveis
 
 ```bash
 python scripts/validate_repository.py
-cd backend && PYTHONPATH=. pytest --cov=app --cov-report=term-missing
-cd ../demo-target && PYTHONPATH=. pytest -q
+cd backend && python -m pytest -q
+cd ../demo-target && PYTHONPATH=. python -m pytest -q
 cd ../frontend && npm install && npm run test && npm run build
-docker compose config
-docker compose up --build
 ```
 
 ## Conclusão
 
-O núcleo funcional, a persistência local de testes, a autenticação, o scraping HTTP, a detecção, a fila local de fallback, os snapshots e a interface em nível de sintaxe foram validados. O build completo do frontend e dos containers deve ser confirmado pelo CI ou por um computador com acesso ao npm e Docker Desktop.
+A página demonstrativa de portfólio foi incorporada ao projeto sem remover o dashboard existente. O repositório está preparado para publicar uma landing profissional e, a partir dela, abrir a experiência interativa em modo showcase sem backend.

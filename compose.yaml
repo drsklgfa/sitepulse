@@ -56,7 +56,7 @@ services:
       uvicorn app.main:app --host 0.0.0.0 --port 8000"
     environment: &backend-env
       APP_ENV: development
-      APP_VERSION: 1.0.0
+      APP_VERSION: 1.1.0
       SECRET_KEY: ${SECRET_KEY:-local-development-secret-change-before-production}
       DATABASE_URL: postgresql+psycopg://sitepulse:sitepulse@postgres:5432/sitepulse
       REDIS_URL: redis://redis:6379/0

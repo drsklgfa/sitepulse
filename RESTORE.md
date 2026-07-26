@@ -5,14 +5,14 @@
 Linux/macOS:
 
 ```bash
-sha256sum -c sitepulse-checkpoint-v1.0.0.zip.sha256
+sha256sum -c sitepulse-checkpoint-v1.1.0.zip.sha256
 ```
 
 PowerShell:
 
 ```powershell
-Get-FileHash .\sitepulse-checkpoint-v1.0.0.zip -Algorithm SHA256
-Get-Content .\sitepulse-checkpoint-v1.0.0.zip.sha256
+Get-FileHash .\sitepulse-checkpoint-v1.1.0.zip -Algorithm SHA256
+Get-Content .\sitepulse-checkpoint-v1.1.0.zip.sha256
 ```
 
 ## 2. Extrair
